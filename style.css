@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(180deg, #807ece 0%, #8e7ece 100%);
+  background: linear-gradient(90deg, #807ece 0%, #8e7ece 100%);
 }
 
 .container {
@@ -44,8 +44,9 @@ body {
 }
 
 .display__active_equal {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+  filter: brightness(60%);
 }
 
 .display__active_result {
@@ -138,7 +139,7 @@ body {
 
 .btn:hover {
   transform: scale(1.05);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.1s ease-out;
 }
 
 .btn-black:hover {
@@ -154,8 +155,8 @@ body {
 }
 
 .btn:active {
-  transform: scale(0.95);
-  transition: transform 0.15s ease-in-out;
+  transform: scale(0.85);
+  transition: transform 0.2s ease-in;
   filter: brightness(115%);
 }
 
