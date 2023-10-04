@@ -27,6 +27,9 @@ body {
 }
 
 .display__history {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
   color: #6b6b6b;
   height: 28px;
   text-align: right;
@@ -36,6 +39,25 @@ body {
   font-weight: 400;
   line-height: 140%; /* 28px */
   letter-spacing: -0.4px;
+}
+::-webkit-scrollbar {
+  width: 4px;
+  height: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #555;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f1f1f1;
 }
 
 .display__active {
@@ -50,6 +72,8 @@ body {
 }
 
 .display__active_result {
+  overflow: clip;
+  overflow-x: auto;
   flex: 1 0 0;
   height: 50px;
   color: #ebebeb;
@@ -83,7 +107,7 @@ body {
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.48px;
-  border-radius: 999px;
+  border-radius: 50%;
 }
 
 .btn-black {
@@ -138,7 +162,7 @@ body {
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
   transition: transform 0.1s ease-out;
 }
 
@@ -155,7 +179,7 @@ body {
 }
 
 .btn:active {
-  transform: scale(0.85);
+  transform: scale(1);
   transition: transform 0.2s ease-in;
   filter: brightness(115%);
 }
