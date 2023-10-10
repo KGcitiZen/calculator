@@ -11,10 +11,15 @@ function clearAll() {
 
 function clearLast() {
   if (clickedBtns.length > 0) {
-    clickedBtns[clickedBtns.length - 1].splice(-1, 1);
-    console.log(clickedBtns);
+    let lastKeys = clickedBtns[clickedBtns.length - 1];
+    let updatedString = lastKeys.slice(0, -1);
+    if (updatedString === '') {
+      clickedBtns.pop();
+    } else {
+      clickedBtns[clickedBtns.length - 1] = updatedString;
+    }
   }
-  return;
+  console.log(clickedBtns);
 }
 
 const buttons = document.querySelectorAll('.btn');
