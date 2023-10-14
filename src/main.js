@@ -200,6 +200,10 @@ function operate(str) {
     case '-':
       return a - b;
     case '/':
+      if (b === 0) {
+        clearAll();
+        return '0 Division error!';
+      }
       return a / b;
     case '*':
       return a * b;
