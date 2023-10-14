@@ -4,6 +4,45 @@ const OPERATORS = ['+', '-', '/', '*', '%', '='];
 const OPERANDS = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
 const FUNCTIONS = ['clearAll', 'clearLast', 'toggleNegative'];
 
+document.addEventListener('keydown', (event) => {
+  const pressedKey = event.key;
+  let keyName = '';
+
+  switch (pressedKey) {
+    case '.':
+      const floatingBtn = document.getElementById('floatingPoint');
+      if (floatingBtn.disabled === true) {
+        break;
+      } else {
+        keyName = '.';
+      }
+      break;
+    case 'Enter' || '=':
+      keyName = '=';
+      break;
+    case 'c' || 'C':
+      keyName = 'clearAll';
+      break;
+    case 'Backspace':
+      keyName = 'clearLast';
+      break;
+    case 't' || 'T':
+      keyName = 'toggleNegative';
+      break;
+    case ':' || '/':
+      keyName = '/';
+      break;
+    default:
+      keyName = pressedKey;
+      break;
+  }
+
+  const button = document.querySelector(`button[data-key="${keyName}"]`);
+  if (button) {
+    button.click();
+  }
+});
+
 function clearAll() {
   history = '';
   clickedBtns = [];
@@ -20,6 +59,12 @@ function clearLast() {
     }
   }
   console.log(clickedBtns);
+}
+
+function toggleNegative() {
+  let last = clickedBtns[clickedBtns.length - 1];
+  clickedBtns.push((last * -1).toString());
+  clickedBtns.splice(-2, 1);
 }
 
 const buttons = document.querySelectorAll('.btn');
@@ -42,7 +87,7 @@ buttons.forEach((button) => {
     console.table(history);
 
     function manageStack(arr) {
-      // key is last pressed button
+      // key is last clicked button
       let key = target.getAttribute('data-key');
 
       if (key === 'clearAll') {
@@ -54,9 +99,7 @@ buttons.forEach((button) => {
         key === 'toggleNegative' &&
         !isNaN(clickedBtns[clickedBtns.length - 1])
       ) {
-        let last = clickedBtns[clickedBtns.length - 1];
-        clickedBtns.push((last * -1).toString());
-        clickedBtns.splice(-2, 1);
+        toggleNegative();
       }
 
       if (!FUNCTIONS.includes(key)) {
